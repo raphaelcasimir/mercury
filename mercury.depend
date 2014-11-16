@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1415205665 source:d:\dropbox\ece\programmation et algo\projets\gamematrix\main.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1415112665 d:\dropbox\ece\programmation et algo\projets\gamematrix\header.h
+	<time.h>
+	<windows.h>
+
