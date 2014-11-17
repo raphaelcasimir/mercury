@@ -1,10 +1,8 @@
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
 #include <time.h>
-
-
-#endif // HEADER_H_INCLUDED
 #include <windows.h>
+
 
 void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit
 {
@@ -28,3 +26,5 @@ void printGrid(t_config *config);
 int game(t_config *config);
 void switchLetter (t_config *config);
 void searchPattern (config);
+
+#endif // HEADER_H_INCLUDED

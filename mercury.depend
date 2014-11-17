@@ -8,3 +8,12 @@
 	<time.h>
 	<windows.h>
 
+1416227196 source:c:\users\admin\documents\projet info 1\mercury\main.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1416231537 c:\users\admin\documents\projet info 1\mercury\header.h
+	<time.h>
+	<windows.h>
+
