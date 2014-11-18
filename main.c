@@ -1,7 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "header.h"
-///fmod musique
+
+//fmod musique
+
+void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit
+{
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
 
 void menu()
 {
@@ -38,9 +46,9 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
      for (i=0; i<(config->gridHeight); i++)
     {
             config->grid[i]=(char*)malloc(config->gridWidth*sizeof(char));
-    }
+    }// Fin de la création en mémoire de la grille
 
-    for (i=0; i<(config->gridHeight); i++)
+    for (i=0; i<(config->gridHeight); i++)// Remplissage de la grille
     {
         for (j=0; j<(config->gridWidth); j++)
             config->grid[i][j]=(rand()%('E'-'A') +'A');
@@ -48,7 +56,7 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
     return config;
 }
 
-void printGrid(t_config *config) /// Sous-programme d'affichage
+void printGrid(t_config *config) /// Sous-programme d'affichage à refaire
 {
     int i,j;
 
@@ -63,7 +71,6 @@ void printGrid(t_config *config) /// Sous-programme d'affichage
 int game(t_config *config)
 {
     char touche='1';
-    srand(time(NULL));
 
     system("cls");
     printGrid(config); /// Affichage de la grille
@@ -78,22 +85,22 @@ int game(t_config *config)
             switch (touche)
             {
             case 'z' :
-                if (((config->cursy-1)<=(config->gridHeight-1)) && ((config->cursy-1)>=0))
+                if ((config->cursy-1)>=0)
                     (config->cursy)--;
                 break;
 
             case 's' :
-                if (((config->cursy+1)<=(config->gridHeight-1)) && ((config->cursy+1)>=0))
+                if ((config->cursy+1)<=(config->gridHeight-1))
                 (config->cursy)++;
                 break;
 
             case 'q' :
-                if (((config->cursx-1)<=(config->gridWidth-1)) && ((config->cursx-1)>=0))
+                if ((config->cursx-1)>=0)
                     (config->cursx)--;
                 break;
 
             case 'd' :
-                if (((config->cursx+1)<=(config->gridWidth-1)) && ((config->cursx+1)>=0))
+                if ((config->cursx+1)<=(config->gridWidth-1))
                 (config->cursx)++;
                 break;
 
@@ -134,6 +141,7 @@ int main()
 {
     t_config *config;
     int i,j;
+    srand(time(NULL));
 
     printf("gameMatrix\n");
     menu();
