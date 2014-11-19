@@ -63,7 +63,7 @@ void printGrid(t_config *config) /// Sous-programme d'affichage à refaire
     {
         for (j=0; j<(config->gridWidth); j++)
             printf("%c ",config->grid[i][j]);
-        printf("\n\n");
+        printf("\n");
     }
 }
 

@@ -5,20 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-<<<<<<< HEAD
-
-void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit
-{
-COORD mycoord;
-
-mycoord.X = col;
-mycoord.Y = lig;
-SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
-}
-
-=======
 /// Structures
->>>>>>> 0f2ec7e126445227bd819fb9d15ad2bf71f4c5ed
 typedef struct config
 {
     char** grid;
