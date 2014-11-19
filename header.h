@@ -14,7 +14,7 @@ typedef struct config
 
 
 /// Fonctions
-void menu();
+void menu(t_config *config);
 t_config* configInit(t_config *config);
 void printGrid(t_config *config);
 int game(t_config *config);

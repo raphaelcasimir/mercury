@@ -11,10 +11,9 @@ mycoord.Y = lig;
 SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
 
-void menu()
+void menu(t_config *config) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
 {
     int choice;
-    t_config *config;
 
     printf("1. Nouvelle partie\n2. Charger partie\n3. Sauvegarder parie\n4. Reprendre de la derni\212re partie\n5. Options\n6. Quitter\n");
 
@@ -32,11 +31,11 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
 {
     config=(t_config*)malloc(sizeof(t_config));
 
-    config->gridHeight=20; /// A retirer ensuite
-    config->gridWidth=24;
+    config->gridHeight=10; /// A retirer ensuite
+    config->gridWidth=15;
 
-    config->cursy=(config->gridHeight)/2;
-    config->cursx=(config->gridWidth)/2;
+    config->cursy=0;
+    config->cursx=0;
 
     int i,j;
 
@@ -63,8 +62,8 @@ void printGrid(t_config *config) /// Sous-programme d'affichage à refaire
         for (i=0; i<(config->gridHeight); i++)
     {
         for (j=0; j<(config->gridWidth); j++)
-            printf("%c",config->grid[i][j]);
-        printf("\n");
+            printf("%c ",config->grid[i][j]);
+        printf("\n\n");
     }
 }
 
@@ -86,22 +85,22 @@ int game(t_config *config)
             {
             case 'z' :
                 if ((config->cursy-1)>=0)
-                    (config->cursy)--;
+                    (config->cursy)=(config->cursy)-2;
                 break;
 
             case 's' :
-                if ((config->cursy+1)<=(config->gridHeight-1))
-                (config->cursy)++;
+                if ((config->cursy+1)<=(2*(config->gridHeight)-2))
+                (config->cursy)=(config->cursy)+2;
                 break;
 
             case 'q' :
                 if ((config->cursx-1)>=0)
-                    (config->cursx)--;
+                    (config->cursx)=(config->cursx)-2;
                 break;
 
             case 'd' :
-                if ((config->cursx+1)<=(config->gridWidth-1))
-                (config->cursx)++;
+                if ((config->cursx+1)<=(2*(config->gridWidth)-2))
+                (config->cursx)=(config->cursx)+2;
                 break;
 
             case ' ' :
@@ -144,6 +143,6 @@ int main()
     srand(time(NULL));
 
     printf("gameMatrix\n");
-    menu();
+    menu(&config);
     return 0;
 }
