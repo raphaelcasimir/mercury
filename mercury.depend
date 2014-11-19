@@ -8,6 +8,7 @@
 	<time.h>
 	<windows.h>
 
+<<<<<<< HEAD
 1416227196 source:c:\users\admin\documents\projet info 1\mercury\main.c
 	<stdio.h>
 	<stdlib.h>
@@ -16,4 +17,14 @@
 1416231537 c:\users\admin\documents\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
+=======
+1416390028 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
+	"header.h"
+
+1416388125 c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+	<time.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+>>>>>>> 0f2ec7e126445227bd819fb9d15ad2bf71f4c5ed
 
