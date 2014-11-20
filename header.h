@@ -12,6 +12,13 @@ typedef struct config
     int gridHeight,gridWidth,cursy,cursx;
 }t_config;
 
+typedef struct info
+{
+    int score; ///Score actuel
+    int fraise, mandarine, oignon, pomme, soleil;
+    int multiplicateur;
+    int contratF, contratM, contratO, contratP, contratS;
+}t_info;
 
 /// Fonctions
 void menu(t_config *config);
