@@ -15,14 +15,13 @@ void menu(t_config *config) /// Il s'agit du menu qui permettra de modifier les 
 {
     int choice;
 
-    printf("1. Nouvelle partie\n2. Charger partie\n3. Sauvegarder parie\n4. Reprendre de la derni\212re partie\n5. Options\n6. Quitter\n");
+    printf("1. Nouvelle partie\n2. Charger partie\n3. Reprendre de la derni\212re partie\n4. Options\n5. Quitter\n");
 
     fflush(stdin);
     scanf("%d",&choice);
     switch (choice)
     {
     default :
-        config=configInit(config); /// Initialisation de la configuration du jeu
         game(config);
     }
 }
@@ -37,7 +36,7 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
     config->cursy=0;
     config->cursx=0;
 
-    int i,j;
+    int i,j,x;
 
     config->grid=(char**)malloc( (config->gridHeight)*sizeof(char*) );
 
@@ -50,7 +49,16 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
     for (i=0; i<(config->gridHeight); i++)// Remplissage de la grille
     {
         for (j=0; j<(config->gridWidth); j++)
-            config->grid[i][j]=(rand()%('E'-'A') +'A');
+        {
+        /// Génération d'un nombre aléatoire entre 0 et 4
+        x=rand()%5;
+        /// Remplacement de la grille par le caractère correspondant au nombre généré
+        if(x==0) config->grid[i][j]='P';
+        if(x==1) config->grid[i][j]='M';
+        if(x==2) config->grid[i][j]='O';
+        if(x==3) config->grid[i][j]='S';
+        if(x==4) config->grid[i][j]='F';
+        }
     }
     return config;
 }
@@ -67,10 +75,10 @@ void printGrid(t_config *config) /// Sous-programme d'affichage à refaire
     }
 }
 
-int game(t_config *config)
+void game(t_config *config)
 {
     char touche='1';
-
+    config=configInit(config); /// Initialisation de la configuration du jeu
     system("cls");
     printGrid(config); /// Affichage de la grille
     gotoligcol(config->cursy,config->cursx);
@@ -114,28 +122,8 @@ int game(t_config *config)
     while (touche!=27);
 }
 
-void switchLetter (t_config *config)
-{
-    char temp;
-    if ((config->cursx)!=0)
-    {
-        temp=config->grid[config->cursy][config->cursx];
-        config->grid[config->cursy][config->cursx]=config->grid[config->cursy][config->cursx-1];
-        config->grid[config->cursy][config->cursx-1]=temp;
-        system("cls");
-        printGrid(config);
-    }
 
-    else
-        {
-            temp=config->grid[config->cursy][config->cursx];
-            config->grid[config->cursy][config->cursx]=config->grid[config->cursy][config->cursx+1];
-            config->grid[config->cursy][config->cursx+1]=temp;
-            system("cls");
-            printGrid(config);
-        }
 
-}
 int main()
 {
     t_config *config;

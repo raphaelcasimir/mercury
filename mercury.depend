@@ -17,12 +17,15 @@
 	<stdio.h>
 	<stdlib.h>
 
-1416412377 source:c:\users\admin\documents\projet info 1\mercury\main.c
+1416509303 source:c:\users\admin\documents\projet info 1\mercury\main.c
 	"header.h"
 
-1416388125 c:\users\admin\documents\projet info 1\mercury\header.h
+1416580032 c:\users\admin\documents\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
 	<stdlib.h>
+
+1416573553 source:c:\users\admin\documents\projet info 1\mercury\switchletter.c
+	"header.h"
 
