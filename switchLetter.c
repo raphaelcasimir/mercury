@@ -16,14 +16,13 @@ void switchLetter (t_config *config)
     while(k==0)
     {
         fflush(stdin);
-        touche=getch();
         ephemere=(config->cursx/2);
+        touche=getch();
         switch (touche)
         {
         /// Déplacement vers la gauche
         case 'q' : if((config->cursx)!=0)
             {
-                printf("ok");
                 temp=config->grid[config->cursy][ephemere];  //ephemere -> config->cursx
                 config->grid[config->cursy][ephemere]=config->grid[config->cursy][ephemere-1];
                 config->grid[config->cursy][ephemere-1]=temp;
