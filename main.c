@@ -63,25 +63,26 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
     return config;
 }
 
-void printGrid(t_config *config) /// Sous-programme d'affichage à refaire
-{
-    int i,j;
 
-        for (i=0; i<(config->gridHeight); i++)
-    {
-        for (j=0; j<(config->gridWidth); j++)
-            printf("%c ",config->grid[i][j]);
-        printf("\n");
-    }
-}
 
 void game(t_config *config)
 {
     char touche='1';
+    int i, j;
     config=configInit(config); /// Initialisation de la configuration du jeu
     system("cls");
-    printGrid(config); /// Affichage de la grille
-    gotoligcol(config->cursy,config->cursx);
+
+    /// Affichage de la matrice initialisée
+    for(j=0; j<(config->gridHeight); j++)
+    {
+        for(i=0; i<(config->gridWidth); i++)
+        {
+            printGrid(config, i, j);
+        }
+        printf("\n");
+    }
+    /// Placement du curseur à la première ligne de la première colonne
+    gotoligcol(0,0);
 
     do
     {
@@ -130,7 +131,7 @@ int main()
     int i,j;
     srand(time(NULL));
 
-    printf("gameMatrix\n");
+    printf("gameMatrix\n\n");
     menu(&config);
     return 0;
 }

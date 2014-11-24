@@ -22,13 +22,15 @@ typedef struct info
     int niveau;
 }t_info;
 
+
 /// Fonctions
 void menu(t_config *config);
 t_config* configInit(t_config *config);
-void printGrid(t_config *config);
+void printGrid(t_config *config, int x, int y);
 void game(t_config *config);
 void switchLetter (t_config *config);
 //void searchPattern (config);
 char fillAlea ();
+/// int menuPause(t_config *config, t_user *user, t_info *info);
 
 #endif // HEADER_H_INCLUDED

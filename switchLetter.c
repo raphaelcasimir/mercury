@@ -2,8 +2,9 @@
 
 void switchLetter (t_config *config)
 {
-    char temp, touche, minuscule, ephemere; /// La variable ephemere sert à donner au programme le numéro de la colonne
+    char temp, touche, minuscule; /// La variable ephemere sert à donner au programme le numéro de la colonne
     int k=0;
+    int ephemere;
 
     /// Affichage de la lettre selectionnée en minuscule
     ephemere=(config->cursx/2);
@@ -26,18 +27,19 @@ void switchLetter (t_config *config)
                 temp=config->grid[config->cursy][ephemere];  //ephemere -> config->cursx
                 config->grid[config->cursy][ephemere]=config->grid[config->cursy][ephemere-1];
                 config->grid[config->cursy][ephemere-1]=temp;
-                system("cls");
-                printGrid(config);
+                printGrid(config, ephemere, config->cursy);
+                printGrid(config, ephemere-1, config->cursy);
                 k=1;
             }
+
         /// Déplacement vers la droite
-        case 'd' : if((config->cursx)!=(config->gridWidth))
+        case 'd' : if((ephemere)!=(config->gridWidth))
             {
-                temp=config->grid[config->cursy][config->cursx];
-                config->grid[config->cursy][config->cursx]=config->grid[config->cursy][config->cursx+1];
-                config->grid[config->cursy][config->cursx+1]=temp;
-                system("cls");
-                printGrid(config);
+                temp=config->grid[config->cursy][ephemere];
+                config->grid[config->cursy][ephemere]=config->grid[config->cursy][ephemere+1];
+                config->grid[config->cursy][ephemere+1]=temp;
+                printGrid(config, config->cursy, ephemere);
+                printGrid(config, config->cursy, ephemere+1);
                 k=1;
             }
         /// Déplacement vers le haut
@@ -46,22 +48,24 @@ void switchLetter (t_config *config)
                 temp=config->grid[config->cursy][config->cursx];
                 config->grid[config->cursy][config->cursx]=config->grid[config->cursy-1][config->cursx];
                 config->grid[config->cursy-1][config->cursx]=temp;
-                system("cls");
-                printGrid(config);
+                printGrid(config, config->cursy, config->cursx);
+                printGrid(config, config->cursy-1, config->cursx);
                 k=1;
             }
             /// Déplacement vers le bas
-        case 's' : if((config->cursx)!=(config->gridHeight))
+        case 's' : if((config->cursy)!=(config->gridHeight))
             {
                 temp=config->grid[config->cursy][config->cursx];
                 config->grid[config->cursy][config->cursx]=config->grid[config->cursy+1][config->cursx];
                 config->grid[config->cursy+1][config->cursx]=temp;
-                system("cls");
-                printGrid(config);
+                printGrid(config, config->cursy, config->cursx);
+                printGrid(config, config->cursy+1, config->cursx);
                 k=1;
             }
         case ' ' : k=1;
                 config->grid[config->cursy][ephemere]=minuscule-('a'-'A');
+                printGrid(config, config->cursy, ephemere);
+
         }
     }
 }
@@ -83,3 +87,4 @@ char fillAlea ()
     /// Renvoi d'un caractère
     return(x);
 }
+
