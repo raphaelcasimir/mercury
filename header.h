@@ -24,10 +24,10 @@ typedef struct info
 
 
 /// Fonctions
-void menu(t_config *config);
+void menu(t_config *config, /*t_user *user*/ t_info *info);
 t_config* configInit(t_config *config);
 void printGrid(t_config *config, int x, int y);
-void game(t_config *config);
+void game(t_config *config, /*t_user *user*/ t_info *info);
 void switchLetter (t_config *config);
 //void searchPattern (config);
 char fillAlea ();

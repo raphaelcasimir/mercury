@@ -4,70 +4,70 @@ void switchLetter (t_config *config)
 {
     char temp, touche, minuscule; /// La variable ephemere sert à donner au programme le numéro de la colonne
     int k=0;
-    int ephemere;
 
     /// Affichage de la lettre selectionnée en minuscule
-    ephemere=(config->cursx/2);
-    minuscule=config->grid[config->cursy][ephemere];
-    minuscule=minuscule+('a'-'A');
+    minuscule=config->grid[config->cursy][config->cursx]+('a'-'A');
     printf("%c", minuscule);
 
 
     /// Boucle qui se répète tant que le joueur indique des commandes qui sortent du tableau
-    while(k==0)
+ do
     {
         fflush(stdin);
-        ephemere=(config->cursx/2);
         touche=getch();
         switch (touche)
         {
         /// Déplacement vers la gauche
-        case 'q' : if((config->cursx)!=0)
+        case 'q' : if((config->cursx)>0)
             {
-                temp=config->grid[config->cursy][ephemere];  //ephemere -> config->cursx
-                config->grid[config->cursy][ephemere]=config->grid[config->cursy][ephemere-1];
-                config->grid[config->cursy][ephemere-1]=temp;
-                printGrid(config, ephemere, config->cursy);
-                printGrid(config, ephemere-1, config->cursy);
+                temp=config->grid[config->cursy][config->cursx];  //ephemere -> config->cursx
+                config->grid[config->cursy][config->cursx]=config->grid[config->cursy][config->cursx-1];
+                config->grid[config->cursy][config->cursx-1]=temp;
+                printGrid(config, config->cursx, config->cursy);
+                printGrid(config, config->cursx-1, config->cursy);
                 k=1;
             }
+            break;
 
         /// Déplacement vers la droite
-        case 'd' : if((ephemere)!=(config->gridWidth))
+        case 'd' : if((config->cursx)<(config->gridWidth)-1)
             {
-                temp=config->grid[config->cursy][ephemere];
-                config->grid[config->cursy][ephemere]=config->grid[config->cursy][ephemere+1];
-                config->grid[config->cursy][ephemere+1]=temp;
-                printGrid(config, config->cursy, ephemere);
-                printGrid(config, config->cursy, ephemere+1);
+                temp=config->grid[config->cursy][config->cursx];
+                config->grid[config->cursy][config->cursx]=config->grid[config->cursy][config->cursx+1];
+                config->grid[config->cursy][config->cursx+1]=temp;
+                printGrid(config, config->cursx, config->cursy);
+                printGrid(config, config->cursx+1, config->cursy);
                 k=1;
             }
+            break;
         /// Déplacement vers le haut
-        case 'z' : if((config->cursy)!=0)
+        case 'z' : if((config->cursy)>0)
             {
                 temp=config->grid[config->cursy][config->cursx];
                 config->grid[config->cursy][config->cursx]=config->grid[config->cursy-1][config->cursx];
                 config->grid[config->cursy-1][config->cursx]=temp;
-                printGrid(config, config->cursy, config->cursx);
-                printGrid(config, config->cursy-1, config->cursx);
+                printGrid(config, config->cursx, config->cursy);
+                printGrid(config, config->cursx, config->cursy-1);
                 k=1;
             }
+            break;
             /// Déplacement vers le bas
-        case 's' : if((config->cursy)!=(config->gridHeight))
+        case 's' : if((config->cursy)<(config->gridHeight)-1)
             {
                 temp=config->grid[config->cursy][config->cursx];
                 config->grid[config->cursy][config->cursx]=config->grid[config->cursy+1][config->cursx];
                 config->grid[config->cursy+1][config->cursx]=temp;
-                printGrid(config, config->cursy, config->cursx);
-                printGrid(config, config->cursy+1, config->cursx);
+                printGrid(config, config->cursx, config->cursy);
+                printGrid(config, config->cursx, config->cursy+1);
                 k=1;
             }
+            break;
         case ' ' : k=1;
-                config->grid[config->cursy][ephemere]=minuscule-('a'-'A');
-                printGrid(config, config->cursy, ephemere);
-
+            config->grid[config->cursy][config->cursx]=minuscule-('a'-'A');
+            printGrid(config, config->cursx, config->cursy);
+            break;
         }
-    }
+    } while(k==0);
 }
 
 
@@ -87,4 +87,3 @@ char fillAlea ()
     /// Renvoi d'un caractère
     return(x);
 }
-

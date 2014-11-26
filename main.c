@@ -11,7 +11,7 @@ mycoord.Y = lig;
 SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
 
-void menu(t_config *config) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
+void menu(t_config *config, t_info *info) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
 {
     int choice;
 
@@ -22,7 +22,7 @@ void menu(t_config *config) /// Il s'agit du menu qui permettra de modifier les 
     switch (choice)
     {
     default :
-        game(config);
+        game(config, info);
     }
 }
 
@@ -44,9 +44,10 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
      for (i=0; i<(config->gridHeight); i++)
     {
             config->grid[i]=(char*)malloc(config->gridWidth*sizeof(char));
-    }// Fin de la création en mémoire de la grille
+    }/// Fin de la création en mémoire de la grille
 
-    for (i=0; i<(config->gridHeight); i++)// Remplissage de la grille
+    /// Remplissage de la grille
+    for (i=0; i<(config->gridHeight); i++)
     {
         for (j=0; j<(config->gridWidth); j++)
         {
@@ -65,7 +66,7 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
 
 
 
-void game(t_config *config)
+void game(t_config *config, t_info *info)
 {
     char touche='1';
     int i, j;
@@ -86,52 +87,66 @@ void game(t_config *config)
 
     do
     {
-        if (kbhit())
-        {
             touche=getch();
 
             switch (touche)
             {
             case 'z' :
-                if ((config->cursy-1)>=0)
-                    (config->cursy)=(config->cursy)-2;
+                if ((config->cursy)>0)
+                    (config->cursy)=(config->cursy)-1;
                 break;
 
             case 's' :
-                if ((config->cursy+1)<=(2*(config->gridHeight)-2))
-                (config->cursy)=(config->cursy)+2;
+                if ((config->cursy)<(config->gridHeight)-1)
+                (config->cursy)=(config->cursy)+1;
                 break;
 
             case 'q' :
-                if ((config->cursx-1)>=0)
-                    (config->cursx)=(config->cursx)-2;
+                if ((config->cursx)>0)
+                    (config->cursx)=(config->cursx)-1;
                 break;
 
             case 'd' :
-                if ((config->cursx+1)<=(2*(config->gridWidth)-2))
-                (config->cursx)=(config->cursx)+2;
+                if ((config->cursx)<(config->gridWidth)-1)
+                (config->cursx)=(config->cursx)+1;
                 break;
 
             case ' ' :
                 switchLetter (config);
                 //searchPattern (config);
+                break;
+
+            case 27:
+                touche=menuPause(config, info);
+                if(touche==1)
+                {
+                    system("cls");
+
+                    /// Ré-affichage de la matrice
+                    for(j=0; j<(config->gridHeight); j++)
+                    {
+                        for(i=0; i<(config->gridWidth); i++)
+                        {
+                            printGrid(config, i, j);
+                        }
+                    printf("\n");
+
+                    }
+                }
             }
-            gotoligcol(config->cursy,config->cursx);
-        }
-    }
-
-    while (touche!=27);
+            gotoligcol(config->cursy,config->cursx*2);
+    } while (touche!=127);
 }
-
 
 
 int main()
 {
     t_config *config;
+    t_info *info;
     int i,j;
     srand(time(NULL));
 
     printf("gameMatrix\n\n");
-    menu(&config);
+    menu(&config, /*&user*/ &info);
     return 0;
 }

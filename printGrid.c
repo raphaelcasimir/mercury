@@ -9,25 +9,36 @@ void printGrid(t_config *config, int x, int y)
 }
 
 /// Sous-programme d'affichage du menu pendant le jeu
-/* int menuPause(t_config *config, t_user *user, t_info *info)
+int menuPause(t_config *config, t_info *info)
 {
-    int k, touche;
+    int k=0, l, touche;
     system("cls");
-    printf("Menu Pause :\n1. Sauvergarder partie \n2. Charger partie sauvergardee \n3. Options \n4. Retour \n5. Quitter jeu");
-    scanf("%d", &touche);
+    printf("Menu Pause :\n\n1. Sauvergarder partie \n2. Charger partie sauvergardee \n3. Options \n4. Retour \n5. Quitter jeu\n");
+    do{
+        fflush(stdin);
+    touche=getch();
     switch(touche)
     {
-        /// case '1' : void save (config, user, info);
+        /* case '1' : void save (config, info);
+            break;
 
-        /// case '2' : void load (config, user, info);
+        case '2' : void load (config, info);
+            break;
 
-        /// case '3' : void menuOptions(t_user *user);
+        case '3' : void menuOptions(info);
+            break;
+            */
 
         case '4' : k=1;
+            break;
 
-        case '5' : k=0;
+        case '5' : k=127;
+            system("cls");
+            printf("Merci d'avoir joue !\n");
+            break;
     }
+    }while(k==0);
     return k;
 }
-*/
+
 
