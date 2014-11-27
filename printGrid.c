@@ -11,7 +11,7 @@ void printGrid(t_config *config, int x, int y)
 /// Sous-programme d'affichage du menu pendant le jeu
 int menuPause(t_config *config, t_info *info)
 {
-    int k=0, l, touche;
+    int k=0, touche;
     system("cls");
     printf("Menu Pause :\n\n1. Sauvergarder partie \n2. Charger partie sauvergardee \n3. Options \n4. Retour \n5. Quitter jeu\n");
     do{
