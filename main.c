@@ -57,7 +57,8 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
 
 void printGrid(t_config *config) /// Sous-programme d'affichage à refaire
 {
-    int i,j;
+    int i,j;*
+    //system("cls");
 
         for (i=0; i<(config->gridHeight); i++)
     {
