@@ -1,9 +1,12 @@
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
+
 #include <time.h>
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 /// Structures
 typedef struct config
@@ -12,7 +15,8 @@ typedef struct config
     int gridHeight,gridWidth,cursy,cursx;
 }t_config;
 
-typedef struct infos
+
+    typedef struct infos
 {
     char *name;
     int score; ///Score actuel
@@ -23,17 +27,14 @@ typedef struct infos
     int niveau;
 }t_infos;
 
-
-
 /// Fonctions
-void menu(t_config *config, t_infos *infos);
-t_config* configInit(t_config *config, t_infos *infos);
-void printGrid(t_config *config, int x, int y);
-void game(t_config *config, t_infos *infos);
+void menu(t_config *config);
+void configInit(t_config *config, t_infos *infos);
+void printGrid(t_config *config);
+int game(t_config *config);
 void switchLetter (t_config *config);
-void searchPattern (t_config *config, t_infos *infos, int k);
-char fillAlea ();
-int menuPause(t_config *config, t_infos *infos);
-void contrat(t_config *config, t_infos *infos, char lettre, int nb);
+void searchPattern (t_config *config, t_infos *infos);
+void saveAll(t_config *config, t_infos *infos);
+void loadAll(t_config *config, t_infos *infos);
 
 #endif // HEADER_H_INCLUDED
