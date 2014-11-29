@@ -8,10 +8,10 @@
 	<time.h>
 	<windows.h>
 
-1416390204 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
+1417189246 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
 	"header.h"
 
-1416388125 c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+1417189246 c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
@@ -20,7 +20,7 @@
 1417281875 source:c:\users\admin\documents\projet info 1\mercury\main.c
 	"header.h"
 
-1417283476 c:\users\admin\documents\projet info 1\mercury\header.h
+1417284056 c:\users\admin\documents\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
@@ -30,5 +30,8 @@
 	"header.h"
 
 1417283333 source:c:\users\admin\documents\projet info 1\mercury\printgrid.c
+	"header.h"
+
+1417189246 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
 	"header.h"
 

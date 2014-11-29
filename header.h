@@ -10,6 +10,7 @@ typedef struct config
 {
     char** grid;
     int gridHeight,gridWidth,cursy,cursx;
+    FILE* sauvegarde;
 }t_config;
 
 typedef struct infos
