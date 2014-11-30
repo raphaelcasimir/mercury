@@ -20,11 +20,20 @@ void printGrid(t_config *config, int x, int y)
 /// Sous-programme qui met à jour les contrats selon les items supprimés
 void contrat(t_config *config, t_infos *infos, char lettre, int nb)
 {
-    if (lettre=='M') infos->contratM=infos->contratM+nb;
-    if (lettre=='O') infos->contratO=infos->contratO+nb;
-    if (lettre=='S') infos->contratS=infos->contratS+nb;
-    if (lettre=='F') infos->contratF=infos->contratF+nb;
-    if (lettre=='P') infos->contratP=infos->contratP+nb;
+    if ((lettre=='M')&&(infos->contratM+nb<=infos->maxM)) infos->contratM=infos->contratM+nb;
+    if ((lettre=='M')&&(infos->contratM+nb>infos->maxM)) infos->contratM=infos->maxM;
+
+    if ((lettre=='O')&&(infos->contratO+nb<=infos->maxO)) infos->contratO=infos->contratO+nb;
+    if ((lettre=='O')&&(infos->contratO+nb>infos->maxO)) infos->contratO=infos->maxO;
+
+    if ((lettre=='S')&&(infos->contratS+nb<=infos->maxS)) infos->contratS=infos->contratS+nb;
+    if ((lettre=='S')&&(infos->contratS+nb>infos->maxS)) infos->contratS=infos->maxS;
+
+    if ((lettre=='F')&&(infos->contratF+nb<=infos->maxF)) infos->contratF=infos->contratF+nb;
+    if ((lettre=='F')&&(infos->contratF+nb>infos->maxF)) infos->contratF=infos->maxF;
+
+    if ((lettre=='P')&&(infos->contratP+nb<=infos->maxP)) infos->contratP=infos->contratP+nb;
+    if ((lettre=='P')&&(infos->contratP+nb>infos->maxP)) infos->contratP=infos->maxP;
 }
 
 /// Sous-programme d'affichage du menu pendant le jeu
