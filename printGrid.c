@@ -1,5 +1,14 @@
 #include "header.h"
 
+void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit
+{
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
 ///Sous-programme d'affichage case par case
 
 void printGrid(t_config *config, int x, int y)
@@ -29,22 +38,27 @@ int menuPause(t_config *config, t_infos *infos)
     touche=getch();
     switch(touche)
     {
-        /* case '1' : void save (config, infos);
+         case '1' :
+            saveAll (config, infos);
             break;
 
-        case '2' : void load (config, infos);
+        case '2' :
+            loadAll (config, infos);
             break;
 
-        case '3' : void menuOptions(infos);
-            break;
-            */
+        //case '3' : void menuOptions(infos);
+            //break;
+
 
         case '4' : k=1;
             break;
 
-        case '5' : k=127;
+        case '5' : k=27;
             system("cls");
             printf("Merci d'avoir jou\202 !\n");
+            break;
+        case 27 :
+            k=1;
             break;
     }
     }while(k==0);

@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
+//#include <curses.h>
 
 /// Structures
 typedef struct config
@@ -36,5 +37,8 @@ void searchPattern (t_config *config, t_infos *infos, int k);
 char fillAlea ();
 int menuPause(t_config *config, t_infos *infos);
 void contrat(t_config *config, t_infos *infos, char lettre, int nb);
+void loadAll(t_config *config, t_infos *infos);
+void saveAll(t_config *config, t_infos *infos);
+void gotoligcol( int lig, int col );
 
 #endif // HEADER_H_INCLUDED

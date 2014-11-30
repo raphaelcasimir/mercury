@@ -2,27 +2,28 @@
 
 //fmod musique
 
-void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit
-{
-COORD mycoord;
-
-mycoord.X = col;
-mycoord.Y = lig;
-SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
-}
-
 void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
 {
-    int choice;
+    char choice;
 
-    printf("1. Nouvelle partie\n2. Charger partie\n3. Reprendre de la derni\212re partie\n4. Options\n5. Quitter\n");
+    printf("1. Nouvelle partie\n2. Charger partie\n3. Options\n4. Quitter\n");
 
     fflush(stdin);
-    scanf("%d",&choice);
+    scanf("%c",&choice);
     switch (choice)
     {
-    default :
-        game(config, infos);
+    case '1':
+        game(config,infos);
+        break;
+    case '2':
+        loadAll(config,infos);
+        game(config,infos);
+        break;
+    case '3':
+        //menuOptions(config,infos);
+        break;
+    case '4':
+        break;
     }
 }
 
@@ -141,7 +142,7 @@ void game(t_config *config, t_infos *infos)
                 }
             }
             gotoligcol(config->cursy,config->cursx*2);
-    } while (touche!=127);
+    } while (touche!=27);
 }
 
 
@@ -151,10 +152,8 @@ int main()
     t_infos *infos;
     config=(t_config*)malloc(sizeof(t_config));
     infos=(t_infos*)malloc(sizeof(t_infos));
-    int i,j;
     srand(time(NULL));
 
-    printf("gameMatrix\n\n");
     menu(config, infos);
 
     return 0;
