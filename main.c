@@ -118,8 +118,11 @@ void game(t_config *config, t_infos *infos)
 
             case ' ' :
                 switchLetter (config);
-                searchPattern (config, infos, k);
-                gravity(config);
+
+                while (searchPattern (config, infos, k)==1)
+                {
+                    gravity(config,infos);
+                }
                 k++;
                 break;
 

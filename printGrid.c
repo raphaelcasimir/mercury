@@ -68,9 +68,9 @@ int menuPause(t_config *config, t_infos *infos)
 }
 
 /// Sous-programme de recherche des figures dans la matrice
-void searchPattern (t_config *config, t_infos *infos, int a)
+int searchPattern (t_config *config, t_infos *infos, int a)
 {
-    int i, j, k, l, m;
+    int i, j, k, l, m, n=0;
     char lettre;
     for(i=0; i<config->gridHeight; i++)
     {
@@ -154,6 +154,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j+2, i+1);
                     printGrid(config, j+2, i+2);
                 }
+                n=1;
             }
 
             /// 2. Figures à base d'un alignement de 5 caractères identiques en colonne
@@ -208,6 +209,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j-1, i+2);
                     printGrid(config, j-2, i+2);
                 }
+                n=1;
             }
 
 
@@ -304,6 +306,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j+2, i+1);
                     printGrid(config, j+2, i+2);
                 }
+                n=1;
             }
 
             /// 4. Figures à base d'un alignement de 4 caractères identiques en colonne
@@ -399,6 +402,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j-1, i+2);
                     printGrid(config, j-2, i+2);
                 }
+                n=1;
             }
 
             /// 5. Figures à base d'un alignement de 3 caractères en ligne
@@ -592,6 +596,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j, i-1);
                     printGrid(config, j, i+1);
                 }
+                n=1;
 
             }
 
@@ -622,6 +627,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                         contrat(config, infos, lettre, k);
 
                     }
+                    n=1;
                 }
 
                 /// 6.2. Alignement de 5 caractères en colonne
@@ -650,6 +656,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                         contrat(config, infos, lettre, k);
 
                     }
+                    n=1;
                 }
                 /// 6.3. Alignement de 4 caractères en ligne
                 if((j<config->gridWidth-3)&&(config->grid[i][j]==config->grid[i][j+1])&&(config->grid[i][j]==config->grid[i][j+2])&&(config->grid[i][j]==config->grid[i][j+3]))
@@ -668,6 +675,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j+1, i);
                     printGrid(config, j+2, i);
                     printGrid(config, j+3, i);
+                    n=1;
                 }
 
                 /// 6.4. Alignement de 4 caractères en colonne
@@ -687,6 +695,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j, i+1);
                     printGrid(config, j, i+2);
                     printGrid(config, j, i+3);
+                    n=1;
                 }
                 /// 6.5. Alignement de 3 caractères en ligne
                 if((j<config->gridWidth-2)&&(config->grid[i][j]==config->grid[i][j+1])&&(config->grid[i][j]==config->grid[i][j+2]))
@@ -703,6 +712,7 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j, i);
                     printGrid(config, j+1, i);
                     printGrid(config, j+2, i);
+                    n=1;
                 }
                 /// 6.6. Alignement de 3 caractères en colonne
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j])&&(config->grid[i][j]==config->grid[i+2][j]))
@@ -719,13 +729,15 @@ void searchPattern (t_config *config, t_infos *infos, int a)
                     printGrid(config, j, i);
                     printGrid(config, j, i+1);
                     printGrid(config, j, i+2);
+                    n=1;
                 }
         }
     }
+    return n;
 }
 
 
-void gravity (t_config *config)
+void gravity (t_config *config,t_infos *infos)
 {
     int x, y, k=1;
     while (k==1)
@@ -736,9 +748,9 @@ void gravity (t_config *config)
             if(config->grid[0][x]==' ')
                 config->grid[0][x]=fillAlea();
         }
-        for (x=0;x<config->gridWidth; x++)
+        for (y=1;y<config->gridHeight; y++)
         {
-            for (y=1;y<config->gridHeight; y++)
+            for (x=0;x<config->gridWidth; x++)
             {
                 if (config->grid[y][x]==' ')
                 {
@@ -756,8 +768,9 @@ void gravity (t_config *config)
                 printGrid(config, y, x);
             }
             printf("\n");
-            }
+        }
             Sleep(200); /// Attendre un peu pour créer une impression de mouvement visible
     }
+
 
 }
