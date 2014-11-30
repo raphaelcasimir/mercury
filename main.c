@@ -28,7 +28,6 @@ void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra 
 
 t_config* configInit(t_config *config, t_infos *infos) /// Initialisation de la structure t_config, contenant toutes les infoss personnalisables et la grille de jeu.
 {
-    config=(t_config*)malloc(sizeof(t_config));
 
     config->gridHeight=10; /// A retirer ensuite
     config->gridWidth=15;
@@ -150,6 +149,8 @@ int main()
 {
     t_config *config;
     t_infos *infos;
+    config=(t_config*)malloc(sizeof(t_config));
+    infos=(t_infos*)malloc(sizeof(t_infos));
     int i,j;
     srand(time(NULL));
 
