@@ -154,7 +154,7 @@ int main()
     srand(time(NULL));
 
     printf("gameMatrix\n\n");
-    menu(config, info);
+    menu(config, infos);
 
     return 0;
 }
