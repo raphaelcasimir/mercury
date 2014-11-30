@@ -1,17 +1,17 @@
-Raphael niveau=1, 0 points
+Rapha‰l niveau=1, 0 points
 0 0 0 0 0
 0
 0 0 0 0 0
-Height=10, Width=15, cursx=3, cursy=1
+Height=10, Width=15, cursx=1, cursy=1
 numverif=42
 
-M F S F P S M S M S F P M F F 
-P F M M P P P P S F P M M M P 
-M F P S P F F M M P S S M M M 
-S S F P F P M S P S P S S M F 
-S M F S P F S P M S F F M P M 
-P F M S M M S S F P F M F F P 
-S S F F S M F M M S S P P P S 
-F   F M     P S S P   P M F P 
-S P P M F S F   F F P M   M M 
-      F M F P M P F F S F M M 
+A S S   T E S T F M M S P P F 
+P F P   S O F F O P O M M S O 
+P F O   M S O F O P S P F S S 
+O O F P P S O O F S M O M M O 
+O P   M   O M M P F F P F S F 
+M F   P   M M S S F S P P O F 
+F O   P   S F O O S S M O P M 
+P M M S   O O F O M F F S S   
+F F O F   S O S M M O P F M   
+P O M F   M P P O S P S M P   

@@ -40,10 +40,12 @@ int menuPause(t_config *config, t_infos *infos)
     {
          case '1' :
             saveAll (config, infos);
+            k=1;
             break;
 
         case '2' :
             loadAll (config, infos);
+            k=1;
             break;
 
         //case '3' : void menuOptions(infos);

@@ -295,7 +295,6 @@ void loadAll(t_config *config, t_infos *infos)
 
                     if (username[0]!=42)
                     {
-                        printf("%d",infos->maxP);
                         configInit(config,infos); // Réinitialiser les structures chargées
                         printf("Le fichier de sauvegarde semble \210tre corrompu.\nLe supprimer ? (y/n) ");
                         fflush(stdin);

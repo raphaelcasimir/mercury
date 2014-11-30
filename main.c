@@ -76,7 +76,6 @@ void game(t_config *config, t_infos *infos)
 {
     char touche='1';
     int i, j, k=0;
-    config=configInit(config, infos); /// Initialisation de la configuration du jeu
     system("cls");
 
     /// Affichage de la matrice initialisée
@@ -154,6 +153,7 @@ int main()
     infos=(t_infos*)malloc(sizeof(t_infos));
     srand(time(NULL));
 
+    configInit(config,infos);
     menu(config, infos);
 
     return 0;
