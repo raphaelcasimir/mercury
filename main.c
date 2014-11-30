@@ -146,6 +146,6 @@ int main()
     srand(time(NULL));
 
     printf("gameMatrix\n\n");
-    menu(&config, /*&user*/ &info);
+    menu(config, info);
     return 0;
 }
