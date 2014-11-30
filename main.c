@@ -11,7 +11,7 @@ mycoord.Y = lig;
 SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
 
-void menu(t_config *config, t_info *info) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
+void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
 {
     int choice;
 
@@ -22,11 +22,11 @@ void menu(t_config *config, t_info *info) /// Il s'agit du menu qui permettra de
     switch (choice)
     {
     default :
-        game(config, info);
+        game(config, infos);
     }
 }
 
-t_config* configInit(t_config *config) /// Initialisation de la structure t_config, contenant toutes les infos personnalisables et la grille de jeu.
+t_config* configInit(t_config *config, t_infos *infos) /// Initialisation de la structure t_config, contenant toutes les infoss personnalisables et la grille de jeu.
 {
     config=(t_config*)malloc(sizeof(t_config));
 
@@ -45,6 +45,12 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
     {
             config->grid[i]=(char*)malloc(config->gridWidth*sizeof(char));
     }/// Fin de la création en mémoire de la grille
+
+    infos->name=NULL;
+    infos->score=0; infos->niveau=1; infos->maxF=0; infos->maxM=0; infos->maxO=0; infos->maxP=0;
+    infos->maxS=0; infos->contratF=0; infos->contratM=0; infos->contratO=0; infos->contratP=0; infos->contratS=0;
+    infos->multiplicateur=0; infos->fraise=0; infos->mandarine=0; infos->oignon=0; infos->pomme=0; infos->soleil=0;
+
 
     /// Remplissage de la grille
     for (i=0; i<(config->gridHeight); i++)
@@ -65,11 +71,12 @@ t_config* configInit(t_config *config) /// Initialisation de la structure t_conf
 }
 
 
-void game(t_config *config, t_info *info)
+
+void game(t_config *config, t_infos *infos)
 {
     char touche='1';
-    int i, j;
-    config=configInit(config); /// Initialisation de la configuration du jeu
+    int i, j, k=0;
+    config=configInit(config, infos); /// Initialisation de la configuration du jeu
     system("cls");
 
     /// Affichage de la matrice initialisée
@@ -112,11 +119,12 @@ void game(t_config *config, t_info *info)
 
             case ' ' :
                 switchLetter (config);
-                //searchPattern (config);
+                searchPattern (config, infos, k);
+                k++;
                 break;
 
             case 27:
-                touche=menuPause(config, info);
+                touche=menuPause(config, infos);
                 if(touche==1)
                 {
                     system("cls");
@@ -141,11 +149,12 @@ void game(t_config *config, t_info *info)
 int main()
 {
     t_config *config;
-    t_info *info;
+    t_infos *infos;
     int i,j;
     srand(time(NULL));
 
     printf("gameMatrix\n\n");
     menu(config, info);
+
     return 0;
 }
