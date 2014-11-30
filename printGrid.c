@@ -725,3 +725,39 @@ void searchPattern (t_config *config, t_infos *infos, int a)
 }
 
 
+void gravity (t_config *config)
+{
+    int x, y, k=1;
+    while (k==1)
+    {
+        k=0;
+        for (x=0;x<config->gridWidth; x++)
+        {
+            if(config->grid[0][x]==' ')
+                config->grid[0][x]=fillAlea();
+        }
+        for (x=0;x<config->gridWidth; x++)
+        {
+            for (y=1;y<config->gridHeight; y++)
+            {
+                if (config->grid[y][x]==' ')
+                {
+                    config->grid[y][x]=config->grid[y-1][x];
+                    config->grid[y-1][x]=' ';
+                    k=1;
+                }
+            }
+        }
+        /// Réimpression de la grille à chaque descente de 1 case pour avoir une impression de gravité
+        for(x=0; x<(config->gridHeight); x++)
+        {
+            for(y=0; y<(config->gridWidth); y++)
+            {
+                printGrid(config, y, x);
+            }
+            printf("\n");
+            }
+            Sleep(200); /// Attendre un peu pour créer une impression de mouvement visible
+    }
+
+}

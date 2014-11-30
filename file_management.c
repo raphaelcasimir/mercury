@@ -1,6 +1,6 @@
 #include "header.h"
 #include <curses.h>
-void saveAll (t_config *config, t_infos *infos)//t_config *config, t_user *user, t_infos *infos
+void saveAll (t_config *config, t_infos *infos) /// Programme de sauvegarde
 {
         /// Initialisation pdcurses
     initscr();			// Start curses mode
@@ -54,7 +54,7 @@ void saveAll (t_config *config, t_infos *infos)//t_config *config, t_user *user,
     printf("*");
     gotoligcol(j,1);
 
-    while(i!=27) // Boucle de choix de l'emplacement de sauvegarde
+    while(i!=27) /// Boucle de choix de l'emplacement de sauvegarde
     {
             if(kbhit())
             {
