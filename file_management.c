@@ -133,7 +133,7 @@ void saveAll (t_config *config, t_infos *infos) /// Programme de sauvegarde
                     }
 
 
-                    fprintf(save,"%s niveau=%d, %d points\n%d %d %d %d %d\n%d\n%d %d %d %d %d",infos->name,infos->niveau,infos->score , infos->maxF, infos->maxM, infos->maxO, infos->maxP, infos->maxS, infos->contratF, infos->contratM, infos->contratO, infos->contratP, infos->contratS, infos->multiplicateur, infos->fraise, infos->mandarine, infos->oignon, infos->pomme, infos->soleil);
+                    fprintf(save,"%s niveau=%d, %d points\n%d %d %d %d %d\n%d\n",infos->name,infos->niveau,infos->score , infos->maxF, infos->maxM, infos->maxO, infos->maxP, infos->maxS, infos->contratF, infos->contratM, infos->contratO, infos->contratP, infos->contratS, infos->multiplicateur);
                     fprintf(save,"\nHeight=%d, Width=%d, cursx=%d, cursy=%d\nnumverif=42",config->gridHeight,config->gridWidth,config->cursx,config->cursy);
 
                     fprintf(save,"\n\n");
@@ -280,7 +280,7 @@ void loadAll(t_config *config, t_infos *infos)
                     strcpy(infos->name,tempname);
                     free(tempname);
 
-                    fscanf(save," niveau=%d, %d points\n%d %d %d %d %d\n%d\n%d %d %d %d %d",&infos->niveau,&infos->score , &infos->maxF, &infos->maxM, &infos->maxO, &infos->maxP, &infos->maxS, &infos->contratF, &infos->contratM, &infos->contratO, &infos->contratP, &infos->contratS, &infos->multiplicateur, &infos->fraise, &infos->mandarine, &infos->oignon, &infos->pomme, &infos->soleil);
+                    fscanf(save," niveau=%d, %d points\n%d %d %d %d %d\n%d\n",&infos->niveau,&infos->score , &infos->maxF, &infos->maxM, &infos->maxO, &infos->maxP, &infos->maxS, &infos->contratF, &infos->contratM, &infos->contratO, &infos->contratP, &infos->contratS, &infos->multiplicateur);
                     fscanf(save,"\nHeight=%d, Width=%d, cursx=%d, cursy=%d\nnumverif=%d",&config->gridHeight,&config->gridWidth,&config->cursx,&config->cursy,&username[0]);
 
                     fscanf(save,"\n\n",NULL);
