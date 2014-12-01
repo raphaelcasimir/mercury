@@ -27,7 +27,7 @@ void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra 
     }
 }
 
-t_config* configInit(t_config *config, t_infos *infos) /// Initialisation de la structure t_config, contenant toutes les infoss personnalisables et la grille de jeu.
+void configInit(t_config *config, t_infos *infos) /// Initialisation de la structure t_config, contenant toutes les infoss personnalisables et la grille de jeu.
 {
 
     config->gridHeight=10; /// A retirer ensuite
@@ -67,7 +67,7 @@ t_config* configInit(t_config *config, t_infos *infos) /// Initialisation de la 
         if(x==4) config->grid[i][j]='F';
         }
     }
-    return config;
+    initLevel(infos);
 }
 
 
@@ -87,11 +87,19 @@ void game(t_config *config, t_infos *infos)
         }
         printf("\n");
     }
+    while (searchPattern (config, infos, k)==1)
+    {
+        gravity(config,infos);
+    }
     /// Placement du curseur à la première ligne de la première colonne
     gotoligcol(0,0);
 
+    k=1;
+
     do
     {
+        if (kbhit())
+        {
             touche=getch();
 
             switch (touche)
@@ -99,31 +107,33 @@ void game(t_config *config, t_infos *infos)
             case 'z' :
                 if ((config->cursy)>0)
                     (config->cursy)=(config->cursy)-1;
+                    score(infos,0);
                 break;
 
             case 's' :
                 if ((config->cursy)<(config->gridHeight)-1)
                 (config->cursy)=(config->cursy)+1;
+                score(infos,0);
                 break;
 
             case 'q' :
                 if ((config->cursx)>0)
                     (config->cursx)=(config->cursx)-1;
+                    score(infos,0);
                 break;
 
             case 'd' :
                 if ((config->cursx)<(config->gridWidth)-1)
                 (config->cursx)=(config->cursx)+1;
+                score(infos,0);
                 break;
 
             case ' ' :
-                switchLetter (config);
-
+                switchLetter (config,infos);
                 while (searchPattern (config, infos, k)==1)
                 {
                     gravity(config,infos);
                 }
-                k++;
                 break;
 
             case 27:
@@ -145,6 +155,7 @@ void game(t_config *config, t_infos *infos)
                 }
             }
             gotoligcol(config->cursy,config->cursx*2);
+        }
     } while (touche!=27);
 }
 

@@ -20,20 +20,15 @@ void printGrid(t_config *config, int x, int y)
 /// Sous-programme qui met à jour les contrats selon les items supprimés
 void contrat(t_config *config, t_infos *infos, char lettre, int nb)
 {
-    if ((lettre=='M')&&(infos->contratM+nb<=infos->maxM)) infos->contratM=infos->contratM+nb;
-    if ((lettre=='M')&&(infos->contratM+nb>infos->maxM)) infos->contratM=infos->maxM;
+    if (lettre=='M') infos->contratM=infos->contratM+nb;
 
-    if ((lettre=='O')&&(infos->contratO+nb<=infos->maxO)) infos->contratO=infos->contratO+nb;
-    if ((lettre=='O')&&(infos->contratO+nb>infos->maxO)) infos->contratO=infos->maxO;
+    if (lettre=='O') infos->contratO=infos->contratO+nb;
 
-    if ((lettre=='S')&&(infos->contratS+nb<=infos->maxS)) infos->contratS=infos->contratS+nb;
-    if ((lettre=='S')&&(infos->contratS+nb>infos->maxS)) infos->contratS=infos->maxS;
+    if (lettre=='S') infos->contratS=infos->contratS+nb;
 
-    if ((lettre=='F')&&(infos->contratF+nb<=infos->maxF)) infos->contratF=infos->contratF+nb;
-    if ((lettre=='F')&&(infos->contratF+nb>infos->maxF)) infos->contratF=infos->maxF;
+    if (lettre=='F') infos->contratF=infos->contratF+nb;
 
-    if ((lettre=='P')&&(infos->contratP+nb<=infos->maxP)) infos->contratP=infos->contratP+nb;
-    if ((lettre=='P')&&(infos->contratP+nb>infos->maxP)) infos->contratP=infos->maxP;
+    if (lettre=='P') infos->contratP=infos->contratP+nb;
 }
 
 /// Sous-programme d'affichage du menu pendant le jeu
@@ -91,6 +86,7 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 1.1. Croix
                 if((i>1)&&(i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i-1][j+2])&&(config->grid[i][j]==config->grid[i-2][j+2])&&(config->grid[i][j]==config->grid[i+1][j+2])&&(config->grid[i][j]==config->grid[i+2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     /// En cas d'alignement de 5 char ou d'une croix de 5x5, suppression de la totalité des items identiques de la matrice
                     k=0;
                     lettre=config->grid[i][j];
@@ -111,18 +107,19 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, k);
-
+                        score(infos, k);
                     }
                 }
 
                 ///1.2. T vers le bas
                 if((i>1)&&(config->grid[i][j]==config->grid[i-1][j+2])&&(config->grid[i][j]==config->grid[i-2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 8);
-
+                        score(infos, 8);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -142,11 +139,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 ///1.3. T vers le haut
                 if((i<(config->gridHeight-2))&&(config->grid[i][j]==config->grid[i+1][j+2])&&(config->grid[i][j]==config->grid[i+2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 8);
-
+                        score(infos, 8);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -172,11 +170,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 2.1. T vers la gauche
                 if((j<config->gridWidth-2)&&(config->grid[i][j]==config->grid[i+2][j+1])&&(config->grid[i][j]==config->grid[i+2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 8);
-
+                        score(infos, 8);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -197,11 +196,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 2.2. T vers la droite
                 if((j>1)&&(config->grid[i][j]==config->grid[i+2][j-1])&&(config->grid[i][j]==config->grid[i+2][j-2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 8);
-
+                        score(infos, 8);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -228,11 +228,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 3.1. T vers le bas (gauche)
                 if((i>1)&&(config->grid[i][j]==config->grid[i-1][j+1])&&(config->grid[i][j]==config->grid[i-2][j+1]))
                 {
+                    infos->multiplicateur=2;
+                    lettre=config->grid[i][j];
                     if(a!=0)
                     {
-                        lettre=config->grid[i][j];
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -250,11 +251,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 3.2. T vers le bas (droite)
                 if((i>1)&&(config->grid[i][j]==config->grid[i-1][j+2])&&(config->grid[i][j]==config->grid[i-2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -273,11 +275,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 3.3. T vers le haut (gauche)
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j+1])&&(config->grid[i][j]==config->grid[i+2][j+1]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -296,11 +299,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 3.4. T vers le haut (droite)
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j+2])&&(config->grid[i][j]==config->grid[i+2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -325,11 +329,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 4.1. T vers la gauche (haut)
                 if((j<config->gridWidth-2)&&(config->grid[i][j]==config->grid[i+1][j+1])&&(config->grid[i][j]==config->grid[i+1][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -347,11 +352,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 4.1. T vers la gauche (bas)
                 if((j<config->gridWidth-2)&&(config->grid[i][j]==config->grid[i+2][j+1])&&(config->grid[i][j]==config->grid[i+2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -369,11 +375,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 4.3. T vers la droite (haut)
                 if((j>1)&&(config->grid[i][j]==config->grid[i+1][j-1])&&(config->grid[i][j]==config->grid[i+1][j-2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -392,11 +399,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 4.4. T vers la droite (bas)
                 if((j>1)&&(config->grid[i][j]==config->grid[i+2][j-1])&&(config->grid[i][j]==config->grid[i+2][j-2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 7);
-
+                        score(infos, 7);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -420,11 +428,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.1. Croix
                 if((i<config->gridHeight-1)&&(i>0)&&(config->grid[i][j]==config->grid[i-1][j+1])&&(config->grid[i][j]==config->grid[i+1][j+1]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -441,11 +450,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.2. L vers la gauche
                 if((i>1)&&(config->grid[i][j]==config->grid[i-1][j])&&(config->grid[i][j]==config->grid[i-2][j]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i-1][j]=' ';
@@ -462,11 +472,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.3. L vers la droite
                 if((i>1)&&(config->grid[i][j]==config->grid[i-1][j+2])&&(config->grid[i][j]==config->grid[i-2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i-1][j+2]=' ';
@@ -483,11 +494,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.4. L inversé gauche
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j])&&(config->grid[i][j]==config->grid[i+2][j]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -504,11 +516,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.5. L inversé droite
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j+2])&&(config->grid[i][j]==config->grid[i+2][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -525,11 +538,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.6. T vers le haut
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j+1])&&(config->grid[i][j]==config->grid[i+2][j+1]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -546,11 +560,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.7. T vers le bas
                 if((i>1)&&(config->grid[i][j]==config->grid[i-1][j+1])&&(config->grid[i][j]==config->grid[i-2][j+1]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -567,11 +582,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.8. T vers la droite
                 if((i>0)&&(i<config->gridHeight-1)&&(config->grid[i][j]==config->grid[i-1][j+2])&&(config->grid[i][j]==config->grid[i+1][j+2]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -588,11 +604,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 5.9. T vers la gauche
                 if((i>0)&&(i<config->gridHeight-1)&&(config->grid[i][j]==config->grid[i-1][j])&&(config->grid[i][j]==config->grid[i+1][j]))
                 {
+                    infos->multiplicateur=2;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 6);
-
+                        score(infos, 6);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -609,11 +626,13 @@ int searchPattern (t_config *config, t_infos *infos, int a)
 
             }
 
+
             /// 6. Alignements simples
 
                 /// 6.1. Alignement de 5 caractères en ligne
                 if((j<config->gridWidth-4)&&(config->grid[i][j]==config->grid[i][j+1])&&(config->grid[i][j]==config->grid[i][j+2])&&(config->grid[i][j]==config->grid[i][j+3])&&(config->grid[i][j]==config->grid[i][j+4]))
                 {
+                    infos->multiplicateur=1;
                     /// En cas d'alignement de 5 char, suppression de la totalité des items identiques de la matrice
                     k=0;
                     lettre=config->grid[i][j];
@@ -626,7 +645,6 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                                 config->grid[l][m]=' ';
                                 printGrid(config, m, l);
                                 k++;
-
                             }
                         }
                     }
@@ -634,7 +652,7 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, k);
-
+                        score(infos, k);
                     }
                     n=1;
                 }
@@ -643,6 +661,7 @@ int searchPattern (t_config *config, t_infos *infos, int a)
 
                 if((i<config->gridHeight-4)&&(config->grid[i][j]==config->grid[i+1][j])&&(config->grid[i][j]==config->grid[i+2][j])&&(config->grid[i][j]==config->grid[i+3][j])&&(config->grid[i][j]==config->grid[i+4][j]))
                 {
+                    infos->multiplicateur=1;
                     /// En cas d'alignement de 5 char, suppression de la totalité des items identiques de la matrice
                     k=0;
                     lettre=config->grid[i][j];
@@ -655,7 +674,6 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                                 config->grid[l][m]=' ';
                                 printGrid(config, m, l);
                                 k++;
-
                             }
                         }
                     }
@@ -663,18 +681,19 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, k);
-
+                        score(infos, k);
                     }
                     n=1;
                 }
                 /// 6.3. Alignement de 4 caractères en ligne
                 if((j<config->gridWidth-3)&&(config->grid[i][j]==config->grid[i][j+1])&&(config->grid[i][j]==config->grid[i][j+2])&&(config->grid[i][j]==config->grid[i][j+3]))
                 {
+                    infos->multiplicateur=1;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 4);
-
+                        score(infos, 4);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -690,11 +709,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 6.4. Alignement de 4 caractères en colonne
                 if((i<config->gridHeight-3)&&(config->grid[i][j]==config->grid[i+1][j])&&(config->grid[i][j]==config->grid[i+2][j])&&(config->grid[i][j]==config->grid[i+3][j]))
                 {
+                    infos->multiplicateur=1;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 4);
-
+                        score(infos, 4);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i+1][j]=' ';
@@ -709,11 +729,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 6.5. Alignement de 3 caractères en ligne
                 if((j<config->gridWidth-2)&&(config->grid[i][j]==config->grid[i][j+1])&&(config->grid[i][j]==config->grid[i][j+2]))
                 {
+                    infos->multiplicateur=1;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 3);
-
+                        score(infos, 3);
                     }
                     config->grid[i][j]=' ';
                     config->grid[i][j+1]=' ';
@@ -726,10 +747,12 @@ int searchPattern (t_config *config, t_infos *infos, int a)
                 /// 6.6. Alignement de 3 caractères en colonne
                 if((i<config->gridHeight-2)&&(config->grid[i][j]==config->grid[i+1][j])&&(config->grid[i][j]==config->grid[i+2][j]))
                 {
+                    infos->multiplicateur=1;
                     lettre=config->grid[i][j];
                     if(a!=0)
                     {
                         contrat(config, infos, lettre, 3);
+                        score(infos, 3);
 
                     }
                     config->grid[i][j]=' ';
@@ -778,7 +801,7 @@ void gravity (t_config *config,t_infos *infos)
             }
             printf("\n");
         }
-            Sleep(200); /// Attendre un peu pour créer une impression de mouvement visible
+            Sleep(100); /// Attendre un peu pour créer une impression de mouvement visible
     }
 
 

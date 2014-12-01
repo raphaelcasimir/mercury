@@ -8,10 +8,10 @@
 	<time.h>
 	<windows.h>
 
-1417189246 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
+1417465452 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
 	"header.h"
 
-1417189246 c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+1417465874 c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
@@ -32,28 +32,32 @@
 1417283333 source:c:\users\admin\documents\projet info 1\mercury\printgrid.c
 	"header.h"
 
-1417189246 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
+1417465874 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
 	"header.h"
 
-1417189651 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
+1417462710 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
 	"header.h"
 
-1417189246 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
+1417382997 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
 	"header.h"
 
-1417376409 d:\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+1417383126 d:\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
 	<stdlib.h>
 
-1417375790 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
+1417382438 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
 	"header.h"
 
 1417376970 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
 	"header.h"
 
 1417376970 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
+	"header.h"
+	<curses.h>
+
+1417376970 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
 	"header.h"
 	<curses.h>
 

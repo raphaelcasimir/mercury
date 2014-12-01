@@ -1,6 +1,6 @@
 #include "header.h"
 
-void switchLetter (t_config *config)
+void switchLetter (t_config *config,t_infos *infos)
 {
     char temp, touche, minuscule; /// La variable ephemere sert à donner au programme le numéro de la colonne
     int k=0;
@@ -25,7 +25,7 @@ void switchLetter (t_config *config)
                 config->grid[config->cursy][config->cursx-1]=temp;
                 printGrid(config, config->cursx, config->cursy);
                 printGrid(config, config->cursx-1, config->cursy);
-                k=1;
+                k=1;infos->hits++;
             }
             break;
 
@@ -37,7 +37,7 @@ void switchLetter (t_config *config)
                 config->grid[config->cursy][config->cursx+1]=temp;
                 printGrid(config, config->cursx, config->cursy);
                 printGrid(config, config->cursx+1, config->cursy);
-                k=1;
+                k=1;infos->hits++;
             }
             break;
         /// Déplacement vers le haut
@@ -48,7 +48,7 @@ void switchLetter (t_config *config)
                 config->grid[config->cursy-1][config->cursx]=temp;
                 printGrid(config, config->cursx, config->cursy);
                 printGrid(config, config->cursx, config->cursy-1);
-                k=1;
+                k=1;infos->hits++;
             }
             break;
             /// Déplacement vers le bas
@@ -59,7 +59,7 @@ void switchLetter (t_config *config)
                 config->grid[config->cursy+1][config->cursx]=temp;
                 printGrid(config, config->cursx, config->cursy);
                 printGrid(config, config->cursx, config->cursy+1);
-                k=1;
+                k=1;infos->hits++;
             }
             break;
         case ' ' : k=1;
@@ -86,4 +86,33 @@ char fillAlea ()
     if(x==4) x='F';
     /// Renvoi d'un caractère
     return(x);
+}
+
+void score (t_infos *infos, int points)
+{
+    // Calcul du score
+    infos->score+=infos->multiplicateur*points;
+
+    //Affichage du score et des contracts
+    gotoligcol(0,34);
+    printf("Score : %d\n", infos->score);
+    gotoligcol(1,34);
+    printf("Functions : %d\/%d",infos->contratF,infos->maxF);
+    gotoligcol(2,34);
+    printf("Processes : %d\/%d",infos->contratP,infos->maxP);
+    gotoligcol(3,34);
+    printf("Masters   : %d\/%d",infos->contratM,infos->maxM);
+    gotoligcol(4,34);
+    printf("Origins   : %d\/%d",infos->contratO,infos->maxO);
+    gotoligcol(5,34);
+    printf("Slices    : %d\/%d",infos->contratS,infos->maxS);
+    gotoligcol(7,34);
+    printf("ModTokens : %d\/%d",infos->hits,infos->maxHits);
+}
+
+void initLevel (t_infos *infos) /// Initialisation des variables propres au niveau
+{
+    infos->maxF=(infos->niveau)*10+rand()%9; infos->maxM=(infos->niveau)*10+rand()%9; infos->maxO=(infos->niveau)*10+rand()%9; infos->maxP=(infos->niveau)*10+rand()%9; infos->maxS=(infos->niveau)*10+rand()%9;
+    infos->maxHits=(infos->niveau)*10+4-(2*(infos->niveau));
+    infos->hits=0;
 }
