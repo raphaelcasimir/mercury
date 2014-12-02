@@ -156,6 +156,7 @@ void game(t_config *config, t_infos *infos)
             }
             gotoligcol(config->cursy,config->cursx*2);
         }
+        switchLevel(config,infos);
     } while (touche!=27);
 }
 

@@ -113,17 +113,23 @@ void score (t_infos *infos, int points)
 void initLevel (t_infos *infos) /// Initialisation des variables propres au niveau
 {
     infos->maxF=(infos->niveau)*10+rand()%9; infos->maxM=(infos->niveau)*10+rand()%9; infos->maxO=(infos->niveau)*10+rand()%9; infos->maxP=(infos->niveau)*10+rand()%9; infos->maxS=(infos->niveau)*10+rand()%9;
+    infos->contratF=0; infos->contratM=0; infos->contratO=0; infos->contratP=0; infos->contratS=0;
     infos->maxHits=(infos->niveau)*10+4-(2*(infos->niveau));
     infos->hits=0;
 }
 
-void switchLevel (t_infos *infos)
+void switchLevel (t_config *config,t_infos *infos)
 {
     if ( (infos->contratF>=infos->maxF)&&(infos->contratM>=infos->maxM)&&(infos->contratO>=infos->maxO)
           &&(infos->contratP>=infos->maxP)&&(infos->contratS>=infos->maxS) )
     {
         system("cls");
-
+        gotoligcol(5,5);
         infos->niveau++;
+        printf("NIVEAU %d",infos->niveau);
+        Sleep(1500);
+        initLevel(infos);
+
+        game(config,infos);
     }
 }
