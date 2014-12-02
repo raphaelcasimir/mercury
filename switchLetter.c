@@ -145,7 +145,7 @@ void switchLevel (t_config *config,t_infos *infos)
         Sleep(2000);
         if (infos->vies!=0)
         {
-            configInit(config,infos);
+            initLevel(infos);
             game(config,infos);
         }
 

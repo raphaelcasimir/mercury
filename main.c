@@ -100,6 +100,7 @@ void game(t_config *config, t_infos *infos)
 
     do
     {
+        switchLevel(config,infos);
         if(kbhit())
         {
             touche=getch();
@@ -146,7 +147,7 @@ void game(t_config *config, t_infos *infos)
             }
             gotoligcol(config->cursy,config->cursx*2);
         }
-        switchLevel(config,infos);
+
     } while (i!=50);
 }
 
