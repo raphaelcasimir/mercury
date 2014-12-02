@@ -116,3 +116,14 @@ void initLevel (t_infos *infos) /// Initialisation des variables propres au nive
     infos->maxHits=(infos->niveau)*10+4-(2*(infos->niveau));
     infos->hits=0;
 }
+
+void switchLevel (t_infos *infos)
+{
+    if ( (infos->contratF>=infos->maxF)&&(infos->contratM>=infos->maxM)&&(infos->contratO>=infos->maxO)
+          &&(infos->contratP>=infos->maxP)&&(infos->contratS>=infos->maxS) )
+    {
+        system("cls");
+
+        infos->niveau++;
+    }
+}
