@@ -1,6 +1,5 @@
 #include "header.h"
-
-//fmod musique
+//Auteurs : Marianne Champalier et Raphaël CASIMIR ING1 TD2
 
 void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
 {
@@ -13,6 +12,9 @@ void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra 
     switch (choice)
     {
     case '1':
+        system("cls");
+        printf("Utilisez z,q,s,d pour vous d\202placer et espace pour s\202lectionner");
+        Sleep(2000);
         game(config,infos);
         break;
     case '2':
