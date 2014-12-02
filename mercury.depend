@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1415205665 source:d:\dropbox\ece\programmation et algo\projets\gamematrix\main.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1415112665 d:\dropbox\ece\programmation et algo\projets\gamematrix\header.h
+	<time.h>
+	<windows.h>
+
+1417529854 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
+	"header.h"
+
+1417524967 c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+	<time.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+
+1417281875 source:c:\users\admin\documents\projet info 1\mercury\main.c
+	"header.h"
+
+1417284056 c:\users\admin\documents\projet info 1\mercury\header.h
+	<time.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+
+1417092172 source:c:\users\admin\documents\projet info 1\mercury\switchletter.c
+	"header.h"
+
+1417283333 source:c:\users\admin\documents\projet info 1\mercury\printgrid.c
+	"header.h"
+
+1417527250 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
+	"header.h"
+
+1417530810 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
+	"header.h"
+
+1417382997 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
+	"header.h"
+
+1417383126 d:\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+	<time.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+
+1417382438 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
+	"header.h"
+
+1417376970 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
+	"header.h"
+
+1417376970 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
+	"header.h"
+	<curses.h>
+
+1417528151 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
+	"header.h"
+	<curses.h>
+

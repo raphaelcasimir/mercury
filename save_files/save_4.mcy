@@ -1,0 +1,17 @@
+test_9 niveau=1, 0 points
+14 16 18 15 18
+0 0 0 0 0
+1 0 12 5
+Height=10, Width=15, cursx=0, cursy=0
+numverif=42
+
+M F M F P M S S P S P S M O O 
+M F M P M F O F F M S S F F P 
+S S P O P P S F F S M M O S O 
+O F S F O S F P O F O P S P P 
+F P M O F P S O P M O O P O M 
+F M F O O S M M O S M F S P M 
+M F M P P S M O F F M P M F P 
+F M P O F P F M F O F F P P O 
+O O F F M O O P O M O O F P M 
+O O F P O P O F O P M P P O M 
