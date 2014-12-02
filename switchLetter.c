@@ -108,6 +108,9 @@ void score (t_infos *infos, int points)
     printf("Slices    : %d\/%d",infos->contratS,infos->maxS);
     gotoligcol(7,34);
     printf("ModTokens : %d\/%d",infos->hits,infos->maxHits);
+    gotoligcol(8,34);
+    printf("Lifes : %d\/5",infos->vies);
+
 }
 
 void initLevel (t_infos *infos) /// Initialisation des variables propres au niveau
@@ -129,7 +132,20 @@ void switchLevel (t_config *config,t_infos *infos)
         printf("NIVEAU %d",infos->niveau);
         Sleep(1500);
         initLevel(infos);
-
+        game(config,infos);
+    }
+    if((infos->hits)>=(infos->maxHits))
+    {
+        infos->vies--;
+        configInit(config,infos);
+        game(config,infos);
+    }
+    if(infos->vies==0)
+    {
+        system("cls");
+        printf("GAME OVER");
+        saveAll(config,infos);
+        configInit(config,infos);
         game(config,infos);
     }
 }

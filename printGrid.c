@@ -801,7 +801,7 @@ void gravity (t_config *config,t_infos *infos)
             }
             printf("\n");
         }
-            Sleep(100); /// Attendre un peu pour créer une impression de mouvement visible
+            Sleep(60); /// Attendre un peu pour créer une impression de mouvement visible
     }
 
 

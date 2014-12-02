@@ -21,7 +21,7 @@ typedef struct infos
     int multiplicateur;
     int contratF, contratM, contratO, contratP, contratS;
     int maxF, maxM, maxO, maxP, maxS;
-    int niveau,hits,maxHits;
+    int niveau,hits,maxHits,vies;
 }t_infos;
 
 

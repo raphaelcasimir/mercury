@@ -49,7 +49,7 @@ void configInit(t_config *config, t_infos *infos) /// Initialisation de la struc
     infos->name=NULL;
     infos->score=0; infos->niveau=1; infos->maxF=0; infos->maxM=0; infos->maxO=0; infos->maxP=0;
     infos->maxS=0; infos->contratF=0; infos->contratM=0; infos->contratO=0; infos->contratP=0; infos->contratS=0;
-    infos->multiplicateur=0;
+    infos->multiplicateur=0;infos->hits=0;infos->maxHits=0;infos->vies=5;
 
 
     /// Remplissage de la grille
