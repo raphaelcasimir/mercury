@@ -156,6 +156,7 @@ void switchLevel (t_config *config,t_infos *infos)
         gotoligcol(5,7);
         printf("GAME OVER");
         Sleep(2000);
+        initLevel(infos);
         saveAll(config,infos);
         configInit(config,infos);
         infos->vies=5;

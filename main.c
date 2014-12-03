@@ -97,7 +97,7 @@ void game(t_config *config, t_infos *infos)
     gotoligcol(0,0);
 
     k=1;
-
+    score(infos,0);
     do
     {
         switchLevel(config,infos);
