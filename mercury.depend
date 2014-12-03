@@ -17,19 +17,19 @@
 	<stdio.h>
 	<stdlib.h>
 
-1417281875 source:c:\users\admin\documents\projet info 1\mercury\main.c
+1417546220 source:c:\users\admin\documents\projet info 1\mercury\main.c
 	"header.h"
 
-1417284056 c:\users\admin\documents\projet info 1\mercury\header.h
+1417546220 c:\users\admin\documents\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
 	<stdlib.h>
 
-1417092172 source:c:\users\admin\documents\projet info 1\mercury\switchletter.c
+1417546220 source:c:\users\admin\documents\projet info 1\mercury\switchletter.c
 	"header.h"
 
-1417283333 source:c:\users\admin\documents\projet info 1\mercury\printgrid.c
+1417546220 source:c:\users\admin\documents\projet info 1\mercury\printgrid.c
 	"header.h"
 
 1417531671 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
@@ -58,6 +58,10 @@
 	<curses.h>
 
 1417528151 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
+	"header.h"
+	<curses.h>
+
+1417546220 source:c:\users\admin\documents\projet info 1\mercury\file_management.c
 	"header.h"
 	<curses.h>
 
