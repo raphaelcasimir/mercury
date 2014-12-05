@@ -1,5 +1,6 @@
 #include "header.h"
 #include <curses.h>
+
 void saveAll (t_config *config, t_infos *infos) /// Programme de sauvegarde
 {
         /// Initialisation pdcurses
