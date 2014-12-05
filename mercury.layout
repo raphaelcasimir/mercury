@@ -1,69 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-<<<<<<< HEAD
-	<File name="printGrid.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-=======
-	<File name="switchLetter.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+	<File name="game_functions.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5772" topLine="20" />
+			<Cursor1 position="1085" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
+			<Collapse line="44" />
+			<Collapse line="115" />
+			<Collapse line="128" />
 		</Folding>
 	</File>
-	<File name="header.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
->>>>>>> 510a40a5473fc7250d919d7b28e58a7e1c8a9c11
+	<File name="menu.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1788" topLine="36" />
+			<Cursor1 position="2099" topLine="10" />
+		</Cursor>
+		<Folding>
+			<Collapse line="4" />
+		</Folding>
+	</File>
+	<File name="header.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1221" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="initialisation.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1373" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
-			<Collapse line="14" />
-			<Collapse line="21" />
-			<Collapse line="86" />
+			<Collapse line="11" />
 		</Folding>
 	</File>
-<<<<<<< HEAD
-	<File name="switchLetter.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5652" topLine="31" />
+			<Cursor1 position="362" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="file_management.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11081" topLine="118" />
 		</Cursor>
 		<Folding>
-			<Collapse line="3" />
-=======
-	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+			<Collapse line="4" />
+		</Folding>
+	</File>
+	<File name="print_functions.c" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2388" topLine="62" />
+			<Cursor1 position="4701" topLine="67" />
 		</Cursor>
 		<Folding>
-			<Collapse line="32" />
->>>>>>> 510a40a5473fc7250d919d7b28e58a7e1c8a9c11
+			<Collapse line="4" />
+			<Collapse line="18" />
 		</Folding>
 	</File>
-	<File name="file_management.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="pattern_searching.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10658" topLine="266" />
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2848" topLine="35" />
+			<Cursor1 position="19" topLine="0" />
 		</Cursor>
 		<Folding>
-<<<<<<< HEAD
-			<Collapse line="32" />
+			<Collapse line="4" />
 		</Folding>
-	</File>
-	<File name="header.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="893" topLine="0" />
-		</Cursor>
-=======
-			<Collapse line="3" />
-			<Collapse line="14" />
-			<Collapse line="21" />
-		</Folding>
->>>>>>> 510a40a5473fc7250d919d7b28e58a7e1c8a9c11
 	</File>
 </CodeBlocks_layout_file>

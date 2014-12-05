@@ -1,4 +1,19 @@
 #include "header.h"
+#include <curses.h>
+
+void init_pdcurses_color() // Initialialisation des couleurs pdcurses
+{
+
+    start_color();
+
+    init_pair(1, COLOR_RED,     COLOR_BLACK);
+    init_pair(2, COLOR_GREEN,   COLOR_BLACK);
+    init_pair(3, COLOR_YELLOW,  COLOR_BLACK);
+    init_pair(4, COLOR_BLUE,    COLOR_BLACK);
+    init_pair(5, COLOR_CYAN,    COLOR_BLACK);
+    init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(7, COLOR_WHITE,   COLOR_BLACK);
+  }
 
 char fillAlea ()
 {
@@ -24,12 +39,129 @@ mycoord.Y = lig;
 SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
 
-///Sous-programme d'affichage case par case
+void score (t_infos *infos, int points)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
+    // Calcul du score
+    infos->score+=infos->multiplicateur*points;
+
+    //Affichage du score et des contracts
+    gotoligcol(0,34);
+    printf("Score : %d\n", infos->score);
+
+
+    gotoligcol(1,34);
+    printf("Functions : ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED);
+    if (( ( ((float)infos->contratF)/infos->maxF)>=0.75) && (((float)infos->contratF)/infos->maxF)<1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN); // Jaune
+    if (( ((float)infos->contratF)/infos->maxF) >=1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+    printf("%d\/%d",infos->contratF,infos->maxF);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(2,34);
+    printf("Processes : ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED);
+    if (( ( ((float)infos->contratP)/infos->maxP)>=0.75) && (((float)infos->contratP)/infos->maxP)<1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN); // Jaune
+    if (( ((float)infos->contratP)/infos->maxP) >=1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+    printf("%d\/%d",infos->contratP,infos->maxP);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(3,34);
+    printf("Masters   : ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED);
+    if (( ( ((float)infos->contratM)/infos->maxM)>=0.75) && (((float)infos->contratM)/infos->maxM)<1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN); // Jaune
+    if (( ((float)infos->contratM)/infos->maxM) >=1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+    printf("%d\/%d",infos->contratM,infos->maxM);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(4,34);
+    printf("Origins   : ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED);
+    if (( ( ((float)infos->contratO)/infos->maxO)>=0.75) && (((float)infos->contratO)/infos->maxO)<1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN); // Jaune
+    if (( ((float)infos->contratO)/infos->maxO) >=1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+    printf("%d\/%d",infos->contratO,infos->maxO);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(5,34);
+    printf("Slices    : ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED);
+    if (( ( ((float)infos->contratS)/infos->maxS)>=0.75) && (((float)infos->contratS)/infos->maxS)<1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN); // Jaune
+    if (( ((float)infos->contratS)/infos->maxS) >=1)
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+    printf("%d\/%d",infos->contratS,infos->maxS);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(7,34);
+    printf("ModTokens : ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+    if (( ( ((float)infos->hits)/infos->maxHits)>=0.75))
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED); // Rouge
+    printf("%d\/%d",infos->hits,infos->maxHits);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(8,34);
+    printf("Lifes : ");
+    if ( ( (infos->vies)<=1))
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED); // Rouge
+    printf("%d\/5",infos->vies);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+
+    gotoligcol(10,34);
+    printf("Level : %d ",infos->niveau);
+
+}
+
+///Sous-programme d'affichage case par case
 void printGrid(t_config *config, int x, int y)
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    /*/// Initialisation pdcurses
+    initscr();			// Start curses mode
+	raw();				// Line buffering disabled
+	keypad(stdscr, TRUE);		// We get F1, F2 etc..
+	noecho();			// Don't echo() while we do getch
+	start_color();
+    ///Fin initialisation*/
+
+    //init_pdcurses_color();
     gotoligcol(y,x*2);
+    switch (config->grid[y][x])
+    {
+    case 'M' :
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN); // Jaune
+        break;
+    case 'P' :
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_BLUE); // Bleu
+        break;
+    case 'S' :
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED); // Rouge
+        break;
+    case 'O':
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_GREEN); // Vert
+        break;
+    case 'F':
+        SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY ); // Gris
+        break;
+
+    }
+
+    //attron(COLOR_PAIR(4));
     printf("%c ", config->grid[y][x]);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
+    //attroff(COLOR_PAIR(4));
+    //refresh();
+    //getch();
+    //endwin();
 }
 
 void gravity (t_config *config,t_infos *infos)

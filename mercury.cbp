@@ -34,14 +34,23 @@
 		<Unit filename="file_management.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="game_functions.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="header.h" />
+		<Unit filename="initialisation.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="printGrid.c">
+		<Unit filename="menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="switchLetter.c">
+		<Unit filename="pattern_searching.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="print_functions.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

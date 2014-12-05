@@ -41,33 +41,6 @@ void switchLevel (t_config *config,t_infos *infos)
     }
 }
 
-void score (t_infos *infos, int points)
-{
-    // Calcul du score
-    infos->score+=infos->multiplicateur*points;
-
-    //Affichage du score et des contracts
-    gotoligcol(0,34);
-    printf("Score : %d\n", infos->score);
-    gotoligcol(1,34);
-    printf("Functions : %d\/%d",infos->contratF,infos->maxF);
-    gotoligcol(2,34);
-    printf("Processes : %d\/%d",infos->contratP,infos->maxP);
-    gotoligcol(3,34);
-    printf("Masters   : %d\/%d",infos->contratM,infos->maxM);
-    gotoligcol(4,34);
-    printf("Origins   : %d\/%d",infos->contratO,infos->maxO);
-    gotoligcol(5,34);
-    printf("Slices    : %d\/%d",infos->contratS,infos->maxS);
-    gotoligcol(7,34);
-    printf("ModTokens : %d\/%d",infos->hits,infos->maxHits);
-    gotoligcol(8,34);
-    printf("Lifes : %d\/5",infos->vies);
-    gotoligcol(10,34);
-    printf("Level : %d ",infos->niveau);
-
-}
-
 void switchLetter (t_config *config,t_infos *infos)
 {
     char temp, touche, minuscule; /// La variable ephemere sert à donner au programme le numéro de la colonne
@@ -151,7 +124,6 @@ void contrat(t_config *config, t_infos *infos, char lettre, int nb)
 
     if (lettre=='P') infos->contratP=infos->contratP+nb;
 }
-
 
 void game(t_config *config, t_infos *infos)
 {

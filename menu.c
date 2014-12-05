@@ -1,6 +1,7 @@
 #include "header.h"
 
-void menu(t_config *config, t_infos *infos) /// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
+/// Il s'agit du menu qui permettra de modifier les paramètres du jeu comme charger une partie ou en créer une nouvelle
+void menu(t_config *config, t_infos *infos)
 {
     char choice;
 
@@ -34,7 +35,7 @@ int menuPause(t_config *config, t_infos *infos)
 {
     int k=95, touche;
     system("cls");
-    printf("Menu Pause :\n\n1. Sauvergarder partie \n2. Charger partie sauvergard\202e \n3. Options \n4. Retour \n5. Quitter jeu\n");
+    printf("Menu Pause :\n\n1. Sauvergarder partie \n2. Charger partie sauvergard\202e \n3. Options \n4. Retour \n5. Nouvelle partie \n6. Quitter jeu\n");
 
     do{
         if (kbhit())
@@ -67,6 +68,12 @@ int menuPause(t_config *config, t_infos *infos)
             break;
 
         case '5' :
+            configInit(config,infos);
+            infos->vies=5;
+            game(config,infos);
+            break;
+
+        case '6' :
             system("cls");
             fflush(stdin);
             printf("Merci d'avoir jou\202 !\n");

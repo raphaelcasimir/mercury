@@ -65,7 +65,7 @@
 	"header.h"
 	<curses.h>
 
-1417788266 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\game_functions.c
+1417795578 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\game_functions.c
 	"header.h"
 
 1417788366 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\initialisation.c
@@ -74,6 +74,10 @@
 1417786802 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\pattern_searching.c
 	"header.h"
 
-1417788446 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\print_functions.c
+1417792897 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\print_functions.c
+	"header.h"
+	<curses.h>
+
+1417790485 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\menu.c
 	"header.h"
 
