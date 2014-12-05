@@ -192,7 +192,6 @@ void game(t_config *config, t_infos *infos)
                 break;
 
             case 27:
-                fflush(stdin);
                 i=menuPause(config, infos);
                 break;
             }

@@ -36,11 +36,10 @@ int menuPause(t_config *config, t_infos *infos)
     int k=95, touche;
     system("cls");
     printf("Menu Pause :\n\n1. Sauvergarder partie \n2. Charger partie sauvergard\202e \n3. Options \n4. Retour \n5. Nouvelle partie \n6. Quitter jeu\n");
-
+    fflush(stdin);
     do{
         if (kbhit())
     {
-        fflush(stdin);
         touche=getch();
     }
 
