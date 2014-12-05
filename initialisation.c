@@ -11,7 +11,7 @@ void initLevel (t_infos *infos) /// Initialisation des variables propres au nive
 void configInit(t_config *config, t_infos *infos) /// Initialisation de la structure t_config, contenant toutes les infoss personnalisables et la grille de jeu.
 {
 
-    config->gridHeight=10; /// A retirer ensuite
+    config->gridHeight=10;
     config->gridWidth=15;
 
     config->cursy=0;

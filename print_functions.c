@@ -15,7 +15,7 @@ void init_pdcurses_color() // Initialialisation des couleurs pdcurses
     init_pair(7, COLOR_WHITE,   COLOR_BLACK);
   }
 
-char fillAlea ()
+char fillAlea () /// Génération d'un caractère aléatoire dans les bonnes bornes
 {
     int x;
     /// Génération d'un nombre aléatoire entre 0 et 4
@@ -30,7 +30,7 @@ char fillAlea ()
     return(x);
 }
 
-void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit
+void gotoligcol( int lig, int col ) /// Fonction permettant de placer le pointeur à un endroit, j'aime apprendre des choses aux gens.
 {
 COORD mycoord;
 
@@ -39,7 +39,7 @@ mycoord.Y = lig;
 SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
 
-void score (t_infos *infos, int points)
+void score (t_infos *infos, int points) /// Affiche les scores à droite de la matrice
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -50,7 +50,7 @@ void score (t_infos *infos, int points)
     gotoligcol(0,34);
     printf("Score : %d\n", infos->score);
 
-
+/// On donne un indicateur pour chaque valeur : si c'est rouge c'est dangereux, si c'est vert, c'est le bien, et si c'est jaune... C'est jaune.
     gotoligcol(1,34);
     printf("Functions : ");
     SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED);
@@ -125,15 +125,7 @@ void score (t_infos *infos, int points)
 void printGrid(t_config *config, int x, int y)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    /*/// Initialisation pdcurses
-    initscr();			// Start curses mode
-	raw();				// Line buffering disabled
-	keypad(stdscr, TRUE);		// We get F1, F2 etc..
-	noecho();			// Don't echo() while we do getch
-	start_color();
-    ///Fin initialisation*/
 
-    //init_pdcurses_color();
     gotoligcol(y,x*2);
     switch (config->grid[y][x])
     {
@@ -155,16 +147,11 @@ void printGrid(t_config *config, int x, int y)
 
     }
 
-    //attron(COLOR_PAIR(4));
     printf("%c ", config->grid[y][x]);
     SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Blanc
-    //attroff(COLOR_PAIR(4));
-    //refresh();
-    //getch();
-    //endwin();
 }
 
-void gravity (t_config *config,t_infos *infos)
+void gravity (t_config *config,t_infos *infos) /// Fonction donnant un style "matrix" (ou gravité si on le fait tourner au ralenti)
 {
     int x, y, k=1;
     while (k==1)

@@ -296,7 +296,7 @@ void loadAll(t_config *config, t_infos *infos)
 
                     system("cls");
 
-                    if (username[0]!=42)
+                    if (username[0]!=42) /// Si le fichier est corrompu, demander à le supprimer (détecte un nombre spécifique à un endroit particulier qui montre que le fichier a été créé avec le programme de sauvegarde.
                     {
                         configInit(config,infos); // Réinitialiser les structures chargées
                         printf("Le fichier de sauvegarde semble \210tre corrompu.\nLe supprimer ? (y/n) ");

@@ -17,7 +17,7 @@ void menu(t_config *config, t_infos *infos)
         Sleep(2000);
         game(config,infos);
         break;
-    case '2':
+    case '2': // Appel du sspgrm de chargement
         loadAll(config,infos);
         game(config,infos);
         break;
@@ -67,20 +67,20 @@ int menuPause(t_config *config, t_infos *infos)
             game(config,infos);
             break;
 
-        case '5' :
+        case '5' : // Nouvelle partie
             configInit(config,infos);
             infos->vies=5;
             game(config,infos);
             break;
 
-        case '6' :
+        case '6' : // Quitter
             system("cls");
             fflush(stdin);
             printf("Merci d'avoir jou\202 !\n");
             Sleep(1500);
             k=50;
             break;
-        case 27 :
+        case 27 : // Quand on appuye sur échap
             k=50;
             game(config,infos);
             break;

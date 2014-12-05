@@ -1,6 +1,6 @@
 #include "header.h"
 
-void switchLevel (t_config *config,t_infos *infos)
+void switchLevel (t_config *config,t_infos *infos) /// Vérifie l'état du niveau (game over, level up, perte de vie...)
 {
     if ( (infos->contratF>=infos->maxF)&&(infos->contratM>=infos->maxM)&&(infos->contratO>=infos->maxO)
           &&(infos->contratP>=infos->maxP)&&(infos->contratS>=infos->maxS) )
@@ -18,7 +18,7 @@ void switchLevel (t_config *config,t_infos *infos)
         infos->vies--;
         system("cls");
         gotoligcol(5,7);
-        printf("Life(s) remaining : %d",infos->vies);
+        printf("Life(s) remaining : %d",infos->vies); // Affichage du nombre de vies restantes
         Sleep(2000);
         if (infos->vies!=0)
         {
@@ -27,7 +27,7 @@ void switchLevel (t_config *config,t_infos *infos)
         }
 
     }
-    if(infos->vies==0)
+    if(infos->vies==0) // Si le joueur n'a plus de vie, recharger tout et sauvegarder le score
     {
         system("cls");
         gotoligcol(5,7);
