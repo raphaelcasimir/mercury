@@ -41,7 +41,7 @@
 1417382997 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\switchletter.c
 	"header.h"
 
-1417383126 d:\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
+1417524967 d:\dropbox\ece\programmation et algo\projet info 1\mercury\header.h
 	<time.h>
 	<windows.h>
 	<stdio.h>
@@ -50,10 +50,10 @@
 1417382438 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\printgrid.c
 	"header.h"
 
-1417376970 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
+1417865073 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\main.c
 	"header.h"
 
-1417376970 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
+1417808173 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\file_management.c
 	"header.h"
 	<curses.h>
 
@@ -79,5 +79,21 @@
 	<curses.h>
 
 1417809328 source:c:\users\raphael\dropbox\ece\programmation et algo\projet info 1\mercury\menu.c
+	"header.h"
+
+1417866644 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\game_functions.c
+	"header.h"
+
+1417865389 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\menu.c
+	"header.h"
+
+1417786802 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\pattern_searching.c
+	"header.h"
+
+1417807887 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\print_functions.c
+	"header.h"
+	<curses.h>
+
+1417808664 source:d:\dropbox\ece\programmation et algo\projet info 1\mercury\initialisation.c
 	"header.h"
 

@@ -11,7 +11,7 @@ void saveAll (t_config *config, t_infos *infos) /// Programme de sauvegarde
     ///Fin initialisation
 
     FILE *save;
-    char file[23],*username,*tempname,niveau=1;
+    char file[23],*username,*tempname,niveau=1,*temp=NULL;
     int i=1,j=0;
 
     system("cls");
@@ -40,6 +40,13 @@ void saveAll (t_config *config, t_infos *infos) /// Programme de sauvegarde
             fscanf(save,"%s",tempname); // Récupération du nom
 
             username=(char*)malloc((strlen(tempname)+1)*sizeof(char));
+            do // Gestion des espaces dans le nom
+            {
+                temp=strchr(tempname,'_');
+                if(temp!=NULL)
+                    *temp=' ';
+            }while(temp!=NULL);
+
             strcpy(username,tempname);
             free(tempname);
 
@@ -168,7 +175,7 @@ void loadAll(t_config *config, t_infos *infos)
     ///Fin initialisation
 
     FILE *save;
-    char file[23],*username,*tempname,niveau=1;
+    char file[23],*username,*tempname,niveau=1,*temp=NULL;
     int i=1,j=0;
 
     system("cls");
@@ -199,6 +206,13 @@ void loadAll(t_config *config, t_infos *infos)
             fscanf(save,"%s",tempname); // Récupération du nom
 
             username=(char*)malloc((strlen(tempname)+1)*sizeof(char));
+            do
+            {
+                temp=strchr(tempname,'_'); // Gestion des espaces dans le nom
+                if(temp!=NULL)
+                    *temp=' ';
+            }while(temp!=NULL);
+
             strcpy(username,tempname);
             free(tempname);
 

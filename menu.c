@@ -16,10 +16,12 @@ void menu(t_config *config, t_infos *infos)
         printf("Utilisez z,q,s,d pour vous d\202placer et espace pour s\202lectionner");
         Sleep(2000);
         game(config,infos);
+        fflush(stdin);
         break;
     case '2': // Appel du sspgrm de chargement
         loadAll(config,infos);
         game(config,infos);
+        fflush(stdin);
         break;
     case '3':
         //menuOptions(config,infos);

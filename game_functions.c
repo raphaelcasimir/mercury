@@ -27,16 +27,17 @@ void switchLevel (t_config *config,t_infos *infos) /// Vérifie l'état du niveau 
         }
 
     }
-    if(infos->vies==0) // Si le joueur n'a plus de vie, recharger tout et sauvegarder le score
+    if(infos->vies==0) // Si le joueur n'a plus de vie, sauvegarder le score et recharger tout
     {
         system("cls");
         gotoligcol(5,7);
         printf("GAME OVER");
         Sleep(2000);
+        infos->vies=5;
         initLevel(infos);
         saveAll(config,infos);
         configInit(config,infos);
-        infos->vies=5;
+
         game(config,infos);
     }
 }
@@ -140,7 +141,7 @@ void game(t_config *config, t_infos *infos)
         }
         printf("\n");
     }
-    while (searchPattern (config, infos, k)==1)
+    while ( searchPattern (config, infos, k)==1 )
     {
         gravity(config,infos);
     }
@@ -149,13 +150,13 @@ void game(t_config *config, t_infos *infos)
 
     k=1;
     score(infos,0);
-    do
+    i=0;
+    while (i!=50)
     {
         switchLevel(config,infos);
         if(kbhit())
         {
             touche=getch();
-            fflush(stdin);
 
             switch (touche)
             {
@@ -195,8 +196,7 @@ void game(t_config *config, t_infos *infos)
                 i=menuPause(config, infos);
                 break;
             }
-            gotoligcol(config->cursy,config->cursx*2);
+        gotoligcol(config->cursy,config->cursx*2);
         }
-
-    } while (i!=50);
+    }
 }
