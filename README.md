@@ -6,7 +6,7 @@ _A game that was made solely for the C lessons at ECE Paris_
 _On remarque le fun sur cette capture d'écran_
 
 Se joue avec un clavier AZERTY (ou du moins un layout AZERTY).
-Si vous souhbaitez copier ce projet pour faire le vôtre, sachez qu'il reste des bugs et fonctionnalités non développées.
+Si vous souhaitez copier ce projet pour faire le vôtre, sachez qu'il reste des bugs et fonctionnalités non développées.
 Un conseil: partez de zéro, sous linux, et utilisez NCURSES. C'est moins difficile que ça en a l'air.
 
-**Fait en première année du cursus préparatoire (ING1).**
+**Réalisé en première année du cursus préparatoire (ING1).**
